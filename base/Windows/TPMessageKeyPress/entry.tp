@@ -1,0 +1,41 @@
+{
+    "sdk": 3,
+    "version": 1000,
+    "TPDiscord_Version": "1.0.0",
+    "name": "Touch Portal Message KeyPress",
+    "id": "TouchPortal_MessageKeyPress",
+    "plugin_start_cmd": "\"%TP_PLUGIN_FOLDER%TPMessageKeyPress\\touchportal_messagekeypress.exe\"",
+    "configuration": {
+        "colorDark": "#3F434A",
+        "colorLight": "#00B86F"
+    },
+    "settings": [     
+    ],
+    "categories": [
+        {
+            "id": "message_keypress",
+            "name": "Message Keypress",
+            "imagepath": "%TP_PLUGIN_FOLDER%TPMessageKeyPress/tp-imgur.png",
+            "actions": [
+                {
+                    "id": "message_keypress_type_message",
+                    "prefix": "Message KeyPress",
+                    "name": "Type Keys from String",
+                    "type": "communicate",
+                    "tryInline": "true",
+                    "format": "Message KeyPress: Type {$message_keypress_data$}",
+                    "data": [
+                        {
+                            "id": "message_keypress_data",
+                            "type": "text",
+                            "label": "Message To Type",
+                            "default": ""
+                        }
+                    ]
+                }
+            ],
+            "events": [],
+            "states": []
+        }
+    ]
+}

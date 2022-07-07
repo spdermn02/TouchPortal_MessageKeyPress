@@ -63,7 +63,10 @@ var accentsMap = {
     'Ö': 'shift-@54 O',
     'Ü': 'shift-@54 O'
 };
-var keyboardLayout = { '~': 'shift-@192', '!': 'shift-1', '@': 'shift-2', '#': 'shift-3', '$': 'shift-4', '%': 'shift-5', '^': 'shift-6', '&': 'shift-7', '*': 'shift-8', '(': 'shift-9', ')': 'shift-0', '_': 'shift-@45', '+': 'shift-@61', '{': 'shift-@91', '}': 'shift-@93', ':': 'shift-@59', '"': "shift-@222", '|': 'shift-@92', '<': 'shift-@44', '>': 'shift-@46', '?': 'shift-@47', '': '@192',
+var keyboardLayout = { '~': 'shift-@192', '!': 'shift-1', '@': 'shift-2', '#': 'shift-3', '$': 'shift-4', 
+'%': 'shift-5', '^': 'shift-6', '&': 'shift-7', '*': 'shift-8', '(': 'shift-9', ')': 'shift-0', 
+'_': 'shift-@45', '+': 'shift-@61', '{': 'shift-@91', '}': 'shift-@93', ':': 'shift-@59', 
+'"': "shift-@222", '|': 'shift-@92', '<': 'shift-@44', '>': 'shift-@46', '?': 'shift-@47', '`': '@192',
 }
 
 ks.aggregateKeyboardLayout(accentsMap);

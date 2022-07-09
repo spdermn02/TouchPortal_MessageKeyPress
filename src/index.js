@@ -76,7 +76,12 @@ const typeMessage = (tpmessage) => {
     /* ks.startBatch()
       .batchTypeText(tpmessage.data[0].value)
       .sendBatch(); */
-    ks.sendText(tpmessage.data[0].value);
+   
+      ks.sendText(tpmessage.data[0].value)
+      .catch((error,stdout,stderr) => {
+        logIt("ERROR","There was an error processing sendText "+ error)
+      });
+    
       /* robot.typeString(tpmessage.data[0].value).go(); */
 }
 

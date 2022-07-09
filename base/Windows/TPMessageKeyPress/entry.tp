@@ -1,7 +1,7 @@
 {
-    "sdk": 3,
+    "sdk": 6,
     "version": 1000,
-    "TPDiscord_Version": "1.0.0",
+    "TPMessageKeypress_Version": "1.0.0",
     "name": "Touch Portal Message KeyPress",
     "id": "TouchPortal_MessageKeyPress",
     "plugin_start_cmd": "\"%TP_PLUGIN_FOLDER%TPMessageKeyPress\\touchportal_messagekeypress.exe\"",
@@ -15,7 +15,7 @@
         {
             "id": "message_keypress",
             "name": "Message Keypress",
-            "imagepath": "%TP_PLUGIN_FOLDER%TPMessageKeyPress/tp-imgur.png",
+            "imagepath": "%TP_PLUGIN_FOLDER%TPMessageKeyPress/tp-message-keypress.png",
             "actions": [
                 {
                     "id": "message_keypress_type_message",

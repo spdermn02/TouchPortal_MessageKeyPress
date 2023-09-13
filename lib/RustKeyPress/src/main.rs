@@ -1,3 +1,4 @@
+extern crate enigo;
 use enigo::*;
 use std::env::args;
 

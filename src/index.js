@@ -1,5 +1,5 @@
 const TPClient = new (require('touchportal-api').Client)();
-var exec = require('child_process').exec;
+var execFile = require('child_process').execFile;
 
 
 const pluginId = 'TouchPortal_MessageKeyPress';
@@ -7,19 +7,22 @@ const pluginId = 'TouchPortal_MessageKeyPress';
 let settings = {};
 
 const typeMessage = (tpmessage) => {
-    let command = 'MessageKeyPress.exe "' + tpmessage.data[0].value + '"';
+    let stringToType = tpmessage.data[0].value;
 
-    return exec(command, {}, function(error, stdout, stderr) {
+    execFile('MessageKeyPress.exe', [stringToType], (error, stdout, stderr) => {
         if( error != null ) {
             TPClient.logIt("ERROR", error);
         }
+        TPClient.stateUpdate('message_keypress_typing', 'false');
     });
+        
 }
 
 TPClient.on("Action", (message,hold) => {
     console.log(pluginId, ": DEBUG : ACTION ", JSON.stringify(message), "hold", hold);
     switch(message.actionId) {
         case 'message_keypress_type_message':
+            TPClient.stateUpdate('message_keypress_typing', 'true');
             typeMessage(message);
             break;
         default:

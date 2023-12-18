@@ -1,6 +1,6 @@
 {
   "name": "touchportal_messagekeypress",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Iterate through and keypress a message string",
   "main": "src/index.js",
   "bin": "src/index.js",
@@ -8,11 +8,10 @@
     "assets": "./src/MessageKeyPress.exe"
   },
   "scripts": {
-    "pkg-win": "pkg --targets node14-win-x64 .",
-    "pkg-mac": "pkg --targets node14-macos-x64 .",
-    "build-winX": "pkg --targets node14-win-x64 . && move touchportal_messagekeypress.exe base/Windows/TPMessageKeyPress/ && mkdir base\\Windows\\TPMessageKeyPress\\jar && copy node_modules\\node-key-sender\\jar\\key-sender.jar base\\Windows\\TPMessageKeyPress\\jar && del Installers\\TPMessageKeyPress-Win.tpp && cd base\\Windows && 7z a -tzip ../../Installers/TPMessageKeyPress-Win.tpp TPMessageKeyPress && del TPMessageKeyPress\\touchportal_messagekeypress.exe && rmdir /q /s TPMessageKeyPress\\jar",
-    "build-win": "pkg --targets node14-win-x64 . && move touchportal_messagekeypress.exe base/Windows/TPMessageKeyPress/ && copy src\\MessageKeyPress.exe base\\Windows\\TPMessageKeyPress\\ && del Installers\\TPMessageKeyPress-Win.tpp && cd base\\Windows && 7z a -tzip ../../Installers/TPMessageKeyPress-Win.tpp TPMessageKeyPress && del TPMessageKeyPress\\touchportal_messagekeypress.exe && del TPMessageKeyPress\\MessageKeyPress.exe",
-    "build-mac": "pkg --targets node14-macos-x64 . && move touchportal_messagekeypress base/Mac/TPMessageKeyPress/ && mkdir base\\Mac\\TPMessageKeyPress\\jar && copy node_modules\\node-key-sender\\jar\\key-sender.jar base\\Mac\\TPMessageKeyPress\\jar && del Installers\\TPMessageKeyPress-Mac.tpp && cd base\\Mac && 7z a -tzip ../../Installers/TPMessageKeyPress-Mac.tpp TPMessageKeyPress && del TPMessageKeyPress\\touchportal_messagekeypress && rmdir /q /s TPMessageKeyPress\\jar"
+    "pkg-win": "pkg --targets node18-win-x64 .",
+    "pkg-mac": "pkg --targets node18-macos-x64 .",
+    "build-win": "pkg --targets node18-win-x64 . && move touchportal_messagekeypress.exe base/Windows/TPMessageKeyPress/ && copy src\\MessageKeyPress.exe base\\Windows\\TPMessageKeyPress\\ && del Installers\\TPMessageKeyPress-Win.tpp && cd base\\Windows && 7z a -tzip ../../Installers/TPMessageKeyPress-Win.tpp TPMessageKeyPress && del TPMessageKeyPress\\touchportal_messagekeypress.exe && del TPMessageKeyPress\\MessageKeyPress.exe",
+    "build-mac": "pkg --targets node18-macos-x64 . && move touchportal_messagekeypress base/Mac/TPMessageKeyPress/ && mkdir base\\Mac\\TPMessageKeyPress\\jar && copy node_modules\\node-key-sender\\jar\\key-sender.jar base\\Mac\\TPMessageKeyPress\\jar && del Installers\\TPMessageKeyPress-Mac.tpp && cd base\\Mac && 7z a -tzip ../../Installers/TPMessageKeyPress-Mac.tpp TPMessageKeyPress && del TPMessageKeyPress\\touchportal_messagekeypress && rmdir /q /s TPMessageKeyPress\\jar"
   },
   "repository": {
     "type": "git",
@@ -29,10 +28,9 @@
   },
   "homepage": "https://github.com/spdermn02/TouchPortal_MessageKeyPress#readme",
   "dependencies": {
-    "node-key-sender": "^1.0.11",
-    "touchportal-api": "^3.1.2"
+    "touchportal-api": "^3.3.0"
   },
   "devDependencies": {
-    "pkg": "^5.7.0"
+    "pkg": "^5.8.1"
   }
 }

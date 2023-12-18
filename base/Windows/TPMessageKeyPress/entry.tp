@@ -1,7 +1,7 @@
 {
     "sdk": 6,
-    "version": 1000,
-    "TPMessageKeypress_Version": "1.0.0",
+    "version": 2000,
+    "TPMessageKeypress_Version": "2.0.0",
     "name": "Touch Portal Message KeyPress",
     "id": "TouchPortal_MessageKeyPress",
     "plugin_start_cmd": "\"%TP_PLUGIN_FOLDER%TPMessageKeyPress\\touchportal_messagekeypress.exe\"",
@@ -35,7 +35,18 @@
                 }
             ],
             "events": [],
-            "states": []
+            "states": [
+                {
+                    "id": "message_keypress_typing",
+                    "type":"choice",
+                    "desc": "Is Message Keypress Typing?",
+                    "default":"false",
+                    "valueChoices": [
+                        "false",
+                        "true"
+                    ]
+                }
+            ]
         }
     ]
 }

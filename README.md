@@ -5,6 +5,7 @@
 - [Change Log](#change-log)
 - [System Requirements](#system-requirements)
 - [Action](#action)
+- [Example](#example)
 - [Build Notes](#build-notes)
   - [Your own build](#your-own-build)
 - [Dependencies](#dependencies)
@@ -15,10 +16,13 @@
 - [Acknowledgements](#acknowledgements)
 
 # Description
-Touch Portal's default "Write Text" action uses copy/paste functionality.  This plugin adds the capability of actual keypresses of a set of text instead of the copy/paste method.  Currently only standard ASCII characters from a US keyboard are valid and supported.  Extended Latin characters are in the works but aren't working properly but will be an enhancement later.
+Touch Portal's default "Write Text" action uses copy/paste functionality.  This plugin adds the capability of actual keypresses of a set of text instead of the copy/paste method.  Should be able to support multi-lingual characters as long as they are part of the unicode set. 
 
 # Change Log
 ```
+v2.0.0 - Update to use Rust Binary
+    Updates: Instead of using a jar which required external Java, this uses a Rust binary to execute the typing which seems to work better
+    States: message_keypress_typing - True or False - will tell when the plugin is typing or not.
 v1.0.0 - Initial Release
     Actions:
       - Type Keys from String - type out a string like if it was typed on a keyboard
@@ -28,14 +32,8 @@ v1.0.0 - Initial Release
 
 # System Requirements
 
-- Touch Portal (of course)
-- **System Level Java** (even though this plugin is in Node.JS, it requires java to do the keypress actions)
-  - currently tested with the following version available from [java.com](https://java.com)
-  ```
-  java version "1.8.0_333"
-  Java(TM) SE Runtime Environment (build 1.8.0_333-b02)
-  Java HotSpot(TM) 64-Bit Server VM (build 25.333-b02, mixed mode)
-  ```
+- Touch Portal
+
 # Action
 Only 1 action is provided from this plugin currently
 
@@ -44,23 +42,25 @@ Only 1 action is provided from this plugin currently
 - Type Keys from String
   - Desc: Takes in a string (max 4000 characters will work) and will then start typing those characters like using a keyboard. 
 
+# Example
+
+To utilize the new `message_keypress_typing` state the "most efficient" way is something like the following button
+
+The flow that is executed, types the message, and then calls another flow that does a wait, then repeat loop that checks the status of the `message_keypress_typing` state, when the state is true, it will sleep for 1 millisecond and loop again, else it just allows the loop to complete (near instantaneous) and then allows the rest of the flow execution afterwards to complete.  If you have questions about this, hit me up in the #message_keypress discord channel on the Touch Portal Official Discord.
+
+![Example Button](resources/ExampleButton.png)
+
 
 # Build Notes
 
-Due to using `pkg` to build the binary, we also bring in the key-press jar file but need to make sure that the directory is properly setup in node-key-sender.js, so prior to build need to change node-key-sender.js to use `'.'` instead of `__dirname` for the jar path.
-
-Instead of this: `var jarPath = path.join(__dirname, 'jar', 'key-sender.jar');`
-
-The plugin needs this: `var jarPath = path.join(".", 'jar', 'key-sender.jar');`
+Currently the rust binary is prebuilt in the src directory - working on getting that to be part of the "compile" phase so it's dynamic by OS type.
 
 ## Your own build
 
 If you want to build this yourself, you will need to fork then clone the repo
 run `npm install` to pull in the dependencies
 
-make the modification in the **Build Notes** section to the node_modules/node-key-sender/node_key_sender.js file
-
-once ready, run one of the following depending on your OS of choice. It will package the code into a binary, and drop a .tpp file into the Installers directory
+Run one of the following depending on your OS of choice. It will package the code into a binary, and drop a .tpp file into the Installers directory
 
 Windows: run `npm run build-win`
 
@@ -71,10 +71,8 @@ Mac(Arm64): coming soon
 Linux: coming soon
 
 # Dependencies
- - [node-key-sender](https://www.npmjs.com/package/node-key-sender)
  - [pkg](https://www.npmjs.com/package/pkg)
  - [touchportal-api](https://www.npmjs.com/package/touchportal-api)
- - [Java](https://www.java.com)
 
 # Versioning
 
@@ -93,5 +91,6 @@ Use the Github Issues tab to report any bugs/enhancements for this plug-in. Or m
 
 # Acknowledgements
 1. Thank you to Reinier and Ty the Touch Portal Creators
-2. Thank you to Gitago for testing initially
-3. Thank you to Magicker for additional testing
+2. Thank you to `Gitago` for testing initially
+3. Thank you to `Magicker` for additional testing
+4. Thank you to `Der Apfelmann, Baby` for additional testing of the Rust based version

@@ -1,0 +1,6 @@
+[package]
+name = "MessageKeyPress"
+version = "1.0.0"
+
+[dependencies]
+enigo = "0.0.14"
